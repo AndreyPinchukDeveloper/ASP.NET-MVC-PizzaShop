@@ -1,0 +1,26 @@
+﻿@page
+@model PizzaShop.Views.Shared.MetatagPartialModel
+@{
+}
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />	
+@if(ViewBag.Title != null)
+{
+    <title>@ViewBag.Title</title>
+}
+else
+{
+    <title>My coprporation</title>
+}
+
+@if(ViewBag.Description != null)
+{
+    <meta name="description" content="@ViewBag.Description"/>   
+}
+
+@if(ViewBag.Keywords != null)
+{
+    <meta name="keywords" content="@ViewBag.Keywords"/> 
+}

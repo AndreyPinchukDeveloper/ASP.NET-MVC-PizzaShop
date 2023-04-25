@@ -1,0 +1,20 @@
+﻿@page
+@model PizzaShop.Views.Shared.ScriptsPartialModel
+@{
+}
+
+<script src="ckeditor.js" asp-append-version="true"></script>
+<script>
+	ClassicEditor
+		.create( document.querySelector( '#editor' ), {
+			// toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+		} )
+		.then( editor => {
+			window.editor = editor;
+		} )
+		.catch( err => {
+			console.error( err.stack );
+		} );
+</script>
+
+
