@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using PizzaShop.Data.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +8,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddControllersWithViews()
     .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0)
     .AddSessionStateTempDataProvider();//set comptability with 3.0 version
+
+builder.Services.AddDbContext<AppDbContext>
+    (options => options.UseSqlServer
+    (builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
 var app = builder.Build();
 

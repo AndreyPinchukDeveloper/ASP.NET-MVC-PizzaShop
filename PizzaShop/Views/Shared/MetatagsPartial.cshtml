@@ -1,4 +1,5 @@
 ﻿@page
+@using PizzaShop.Data.Services;
 @model PizzaShop.Views.Shared.MetatagPartialModel
 @{
 }
@@ -12,7 +13,7 @@
 }
 else
 {
-    <title>My coprporation</title>
+    <title>@AppDbContext.CompanyName</title>
 }
 
 @if(ViewBag.Description != null)
