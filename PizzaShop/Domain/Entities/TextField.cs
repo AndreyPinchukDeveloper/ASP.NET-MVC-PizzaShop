@@ -6,8 +6,12 @@ namespace PizzaShop.Domain.Entities
     public class TextField:EntityBase
     {
         [Required]
-        public virtual string Title { get; set; }
+        public string CodeWord { get; set; }
+
         [Display(Name = "Name (header)")]
-        public virtual string Title { get; set; }
+        public override string Title { get; set; } = "Informational page";
+
+        [Display(Name = "Full description")]
+        public virtual string Text { get; set; } = "That field only for Admin";
     }
 }
