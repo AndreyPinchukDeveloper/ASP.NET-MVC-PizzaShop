@@ -51,19 +51,19 @@ namespace PizzaShop.Data.Services
             });
             builder.Entity<TextField>().HasData(new TextField
             {
-                Id = new Guid("bd0fec55-0a77-48eb-8373-31c138d17317"),
+                Id = Guid.NewGuid(),
                 CodeWord = "PageIndex",
                 Title = "Main"
             });
             builder.Entity<TextField>().HasData(new TextField
             {
-                Id = new Guid("85f761a7-ede9-4f34-a034-db8db3f8ff63"),
+                Id = Guid.NewGuid(),
                 CodeWord = "PageServices",
                 Title = "Our services"
             });
             builder.Entity<TextField>().HasData(new TextField
             {
-                Id = new Guid("81de53b7-cdcc-48b6-8623-6449792e422f"),
+                Id = Guid.NewGuid(),
                 CodeWord = "PageContacts",
                 Title = "Contacts"
             });
