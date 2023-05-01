@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="EntityTypeConfiguration\**" />
+    <EmbeddedResource Remove="EntityTypeConfiguration\**" />
+    <None Remove="EntityTypeConfiguration\**" />
+  </ItemGroup>
+
 </Project>
