@@ -1,21 +1,24 @@
 ﻿using AppPersistence.EntityTypeConfiguration;
 using Microsoft.EntityFrameworkCore;
 using ModelDomainLibrary;
-using ShopApplication.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace AppPersistence
 {
-    public class PizzaDbContext : DbContext, IPizzaDbContext
+    public class OrderDbContext:DbContext
     {
-        public DbSet<PizzaModel> Pizza { get; set; }
+        public DbSet<Order> Order { get; set; }
 
-        public PizzaDbContext(DbContextOptions<PizzaDbContext> options):base(options) { }
+        public OrderDbContext(DbContextOptions<OrderDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ModelConfiguration());
             base.OnModelCreating(modelBuilder);
         }
-
     }
 }
