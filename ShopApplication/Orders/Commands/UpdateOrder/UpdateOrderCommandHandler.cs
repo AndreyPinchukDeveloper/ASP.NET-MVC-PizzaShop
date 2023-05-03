@@ -1,13 +1,9 @@
-﻿using MediatR;
+﻿
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using ModelDomainLibrary;
+using ShopApplication.Common.Exceptions;
 using ShopApplication.Interfaces;
-using ShopApplication.Orders.Commands.CreateOrder;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShopApplication.Orders.Commands.UpdateOrder
 {
@@ -20,18 +16,22 @@ namespace ShopApplication.Orders.Commands.UpdateOrder
             _dbContext = dbContext;
         }
 
-        public async Task<Unit> Handle(UpdateOrderCommand request, CancellationToken cancellationToken)
+        public async Task Handle(UpdateOrderCommand request, CancellationToken cancellationToken)
         {
             var entity =
                 await _dbContext.Order.FirstOrDefaultAsync(order =>
                 order.Id == request.Id, cancellationToken);
 
-            if (entity == null || entity.UserId != request.UserId)
+            if (entity == null || entity.UserId != request.UserId)//if not found
             {
-
+                throw new NotFoundException(nameof(Order), request.Id);
             }
 
-            return Unit.Value;
+            entity.Details = request.Deatils;
+            entity.Title = request.Title;
+            entity.EditDate = DateTime.Now;
+
+            await _dbContext.SaveChangesAsync(cancellationToken);
         }
     }
 }

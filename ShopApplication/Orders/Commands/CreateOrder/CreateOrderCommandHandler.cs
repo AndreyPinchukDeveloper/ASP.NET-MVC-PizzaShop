@@ -24,7 +24,7 @@ namespace ShopApplication.Orders.Commands.CreateOrder
             {
                 UserId = request.UserId,
                 Title = request.Title,
-                Deatils = request.Details,
+                Details = request.Details,
                 Id = Guid.NewGuid(),
                 CreationDate = DateTime.Now,
                 EditDate = null
