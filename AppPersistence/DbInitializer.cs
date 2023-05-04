@@ -11,7 +11,7 @@ namespace AppPersistence
     /// </summary>
     public class DbInitializer
     {
-        public static void Initialize(PizzaDbContext context)
+        public static void Initialize(OrderDbContext context)
         {
             context.Database.EnsureCreated();
         }

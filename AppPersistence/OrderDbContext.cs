@@ -1,6 +1,7 @@
 ﻿using AppPersistence.EntityTypeConfiguration;
 using Microsoft.EntityFrameworkCore;
 using ModelDomainLibrary;
+using ShopApplication.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AppPersistence
 {
-    public class OrderDbContext:DbContext
+    public class OrderDbContext:DbContext, IOrderDbContext
     {
         public DbSet<Order> Order { get; set; }
 
