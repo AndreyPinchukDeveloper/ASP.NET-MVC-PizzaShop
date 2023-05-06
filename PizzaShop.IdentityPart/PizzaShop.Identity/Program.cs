@@ -59,6 +59,13 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+app.Services.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(env.ContentRootPath, "Styles")),
+    RequestPath ="/styles"
+});
+
 app.UseRouting();
 app.UseIdentityServer();
 app.UseEndoints(endpoints =>
