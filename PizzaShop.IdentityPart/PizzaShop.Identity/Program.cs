@@ -53,12 +53,18 @@ builder.Services.ConfigureApplicationCookie(config =>
     config.Cookie.Name = "PizzaShop.Identity.Cookie";
     config.LoginPath = "/Auth/Login";
     config.LogoutPath = "/Auth/Logout";
-}); 
+});
+
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
 app.UseRouting();
 app.UseIdentityServer();
+app.UseEndoints(endpoints =>
+{
+    endpoints.MapDefaultControllerRoute();
+});
 
 app.MapGet("/", () => "Hello World!");
 
