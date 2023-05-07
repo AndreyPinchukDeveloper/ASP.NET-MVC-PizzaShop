@@ -1,14 +1,19 @@
-﻿namespace PizzaShop.Identity.Controllers
+﻿using IdentityServer4.Services;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using PizzaShop.Identity.Models;
+
+namespace PizzaShop.Identity.Controllers
 {
     public class AuthorizationController:Controller
     {
-        private readonly SignInManager<AppUser> _signManager;
+        private readonly SignInManager<AppUser> _signInManager;
         private readonly UserManager<AppUser> _userManager;
-        private readonly IIdentityServerInteractionServer _interactionService;
+        private readonly IIdentityServerInteractionService _interactionService;
 
-        public AuthorizationController(SignInManager<AppUser> signManager, UserManager<AppUser> userManager, IIdentityServerInteractionServer interactionService)
+        public AuthorizationController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, IIdentityServerInteractionService interactionService)
         {
-            _signManager = signManager;
+            _signInManager = signInManager;
             _userManager = userManager;
             _interactionService = interactionService;
         }
@@ -31,14 +36,14 @@
                 return View(viewModel);
             }
 
-            var user = await _userManager.FindByNameAsync(viewModel.Usrname);
+            var user = await _userManager.FindByNameAsync(viewModel.Username);
             if (user == null)
             {
-                ModelState.AddModelError(string.empty, "User not found");
+                ModelState.AddModelError(string.Empty, "User not found");
                 return View(viewModel);
             }
 
-            var result = await _signInManger.PasswordSignInAsync(viewModel.Usrname, viewModel.Password, false, false);
+            var result = await _signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, false);
             if (result.Succeeded)
             {
                 return Redirect(viewModel.ReturnUrl);
