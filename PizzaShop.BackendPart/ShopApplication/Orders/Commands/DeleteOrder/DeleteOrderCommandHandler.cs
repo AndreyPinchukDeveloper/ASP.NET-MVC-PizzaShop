@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using ModelDomainLibrary;
+using ShopDomainLibrary;
 using ShopApplication.Common.Exceptions;
 using ShopApplication.Interfaces;
 

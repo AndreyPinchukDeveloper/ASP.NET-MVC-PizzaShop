@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ModelDomainLibrary;
+using ShopDomainLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;

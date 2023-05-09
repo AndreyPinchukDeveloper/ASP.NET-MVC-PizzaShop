@@ -1,4 +1,4 @@
-﻿namespace ModelDomainLibrary
+﻿namespace ShopDomainLibrary
 {
     public class PizzaModel
     {

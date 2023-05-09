@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using ModelDomainLibrary;
+using ShopDomainLibrary;
 using ShopApplication.Interfaces;
 using System;
 using System.Collections.Generic;

@@ -1,7 +1,7 @@
 ﻿
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using ModelDomainLibrary;
+using ShopDomainLibrary;
 using ShopApplication.Common.Exceptions;
 using ShopApplication.Interfaces;
 

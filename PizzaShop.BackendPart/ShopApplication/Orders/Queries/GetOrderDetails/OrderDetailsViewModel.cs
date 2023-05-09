@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ModelDomainLibrary;
+using ShopDomainLibrary;
 using ShopApplication.Common.Mapping;
 using System;
 using System.Collections.Generic;

@@ -1,6 +1,6 @@
 ﻿using AppPersistence.EntityTypeConfiguration;
 using Microsoft.EntityFrameworkCore;
-using ModelDomainLibrary;
+using ShopDomainLibrary;
 using ShopApplication.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace AppPersistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new ModelConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

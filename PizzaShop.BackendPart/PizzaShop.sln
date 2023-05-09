@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{07837154-68AB-42BD-9EA5-584A501D9D00}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelDomainLibrary", "ModelDomainLibrary\ModelDomainLibrary.csproj", "{110FF698-6DCA-43CF-B604-99833AA24DFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopDomainLibrary", "ModelDomainLibrary\ShopDomainLibrary.csproj", "{110FF698-6DCA-43CF-B604-99833AA24DFF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopApplication", "ShopApplication\ShopApplication.csproj", "{A3C7D51F-3A94-4A52-99D6-96482421074F}"
 EndProject

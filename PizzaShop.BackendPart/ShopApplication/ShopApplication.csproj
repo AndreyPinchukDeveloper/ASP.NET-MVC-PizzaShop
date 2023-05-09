@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ModelDomainLibrary\ModelDomainLibrary.csproj" />
+    <ProjectReference Include="..\ModelDomainLibrary\ShopDomainLibrary.csproj" />
   </ItemGroup>
 
 </Project>
