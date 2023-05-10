@@ -55,5 +55,28 @@ namespace PizzaShop.Controllers
             var vm = await Mediator.Send(query);
             return Ok(vm);
         }
+
+        [HttpPut]
+        [Authorize]
+        public async Task<IActionResult> Update([FromBody] UpdateOrderDTO updateOrderDTO)
+        {
+            var command = _mapper.Map<UpdateOrderCommand>(updateOrderDTO);
+            command.UserId = UserId;
+            await Mediator.Send(command);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var command = new DeleteOrderCommand
+            {
+                Id = id,
+                UserId = UserId
+            };
+            await Mediator.Send(command);
+            return NoContent();
+        }
     }
 }
