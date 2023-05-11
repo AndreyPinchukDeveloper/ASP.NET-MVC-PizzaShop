@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using PizzaShop.Controllers.Base;
+using PizzaShop.Models;
+using ShopApplication.Orders.Commands.DeleteOrder;
+using ShopApplication.Orders.Commands.UpdateOrder;
 using ShopApplication.Orders.Queries.GetOrderDetails;
 using ShopApplication.Orders.Queries.GetOrderList;
 

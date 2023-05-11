@@ -1,4 +1,8 @@
-﻿namespace PizzaShop.Models
+﻿using AutoMapper;
+using ShopApplication.Common.Mapping;
+using System.ComponentModel.DataAnnotations;
+
+namespace PizzaShop.Models
 {
     public class UpdateOrderDTO:IMapWith<UpdateOrderCommand>
     {

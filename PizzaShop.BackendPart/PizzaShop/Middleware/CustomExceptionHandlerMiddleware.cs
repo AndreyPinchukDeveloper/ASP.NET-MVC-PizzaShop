@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using FluentValidation;
+using ShopApplication.Common.Exceptions;
 using System.Net;
 using System.Text.Json;
-using FluentValidation;
 
 namespace PizzaShop.Middleware
 {
@@ -44,7 +44,7 @@ namespace PizzaShop.Middleware
                 result = JsonSerializer.Serialize(new { error = exception.Message });
             }
 
-            return context.Resonse.WriteAsync(result);
+            return context.Response.WriteAsync(result);
         }
     }
 }

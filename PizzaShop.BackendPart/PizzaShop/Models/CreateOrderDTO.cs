@@ -1,4 +1,9 @@
-﻿namespace PizzaShop.Models
+﻿using AutoMapper;
+using ShopApplication.Common.Mapping;
+using ShopApplication.Orders.Commands.CreateOrder;
+using System.ComponentModel.DataAnnotations;
+
+namespace PizzaShop.Models
 {
     public class CreateOrderDTO:IMapWith<CreateOrderCommand>
     {
