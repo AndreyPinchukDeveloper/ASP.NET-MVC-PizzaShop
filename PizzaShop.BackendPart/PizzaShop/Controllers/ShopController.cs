@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using PizzaShop.Controllers.Base;
 using PizzaShop.Models;
+using ShopApplication.Orders.Commands.CreateOrder;
 using ShopApplication.Orders.Commands.DeleteOrder;
 using ShopApplication.Orders.Commands.UpdateOrder;
 using ShopApplication.Orders.Queries.GetOrderDetails;
@@ -11,7 +11,7 @@ using ShopApplication.Orders.Queries.GetOrderList;
 
 namespace PizzaShop.Controllers
 {
-    [Route("api/{version:apiVersion}/[controller]")]
+    [Route("api/[controller]")]
     public class ShopController:BaseController
     {
         private readonly IMapper _mapper;
@@ -46,17 +46,14 @@ namespace PizzaShop.Controllers
             return Ok(vm);
         }
 
-        [HttpPut]
+        [HttpPost]
         [Authorize]
-        public async Task<ActionResult<Guid>> Create([FromBody] CreateOrderDTO)
+        public async Task<ActionResult<Guid>> Create([FromBody] CreateOrderDTO createOrderDTO)
         {
-            var query = new GetOrderDetailsQuery
-            {
-                UserId = UserId,
-                Id = id
-            };
-            var vm = await Mediator.Send(query);
-            return Ok(vm);
+            var command = _mapper.Map<CreateOrderCommand>(createOrderDTO);
+            command.UserId = UserId;
+            var noteId = await Mediator.Send(command);
+            return Ok(noteId);
         }
 
         [HttpPut]

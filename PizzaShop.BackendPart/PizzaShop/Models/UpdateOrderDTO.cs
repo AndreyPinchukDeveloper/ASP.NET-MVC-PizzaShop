@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ShopApplication.Common.Mapping;
+using ShopApplication.Orders.Commands.UpdateOrder;
 using System.ComponentModel.DataAnnotations;
 
 namespace PizzaShop.Models
@@ -18,7 +19,7 @@ namespace PizzaShop.Models
                     opt => opt.MapFrom(orderDTO => orderDTO.Id))
                 .ForMember(orderCommand => orderCommand.Title,
                     opt => opt.MapFrom(orderDTO => orderDTO.Title))
-                .ForMember(orderCommand => orderCommand.Details,
+                .ForMember(orderCommand => orderCommand.Deatils,
                     opt => opt.MapFrom(orderDTO => orderDTO.Details));
         }
     }

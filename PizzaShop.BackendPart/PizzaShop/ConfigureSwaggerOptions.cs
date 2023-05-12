@@ -2,8 +2,7 @@
 
 namespace PizzaShop
 {
-    public class ConfigureSwaggerOptions:IConfigureOptions<SwaggerGenOptions>
+    public class ConfigureSwaggerOptions
     {
-
     }
 }

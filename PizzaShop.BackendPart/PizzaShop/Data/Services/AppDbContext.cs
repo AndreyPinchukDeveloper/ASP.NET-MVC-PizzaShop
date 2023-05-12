@@ -57,7 +57,7 @@ namespace PizzaShop.Data.Services
             });
             builder.Entity<TextField>().HasData(new TextField
             {
-                Id = Guid("85f761a7-ede9-4f34-a034-db8db3f8ff63"),
+                Id = new Guid("85f761a7-ede9-4f34-a034-db8db3f8ff63"),
                 CodeWord = "PageServices",
                 Title = "Our services"
             });

@@ -1,9 +1,12 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PizzaShop.Data.Services;
 using PizzaShop.Domain;
 using PizzaShop.Domain.Repositories.Abstract;
 using PizzaShop.Domain.Repositories.EntityFramework;
+using PizzaShop.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +46,33 @@ builder.Services.AddControllersWithViews()
     .AddSessionStateTempDataProvider();//set comptability with 3.0 version
 #endregion
 
+
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyHeader();
+        policy.AllowAnyMethod();
+        policy.AllowAnyOrigin();
+    });
+});
+builder.Services.AddAuthentication(config =>
+{
+    config.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    config.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+    .AddJwtBearer("Bearer", options =>
+    {
+        options.Authority = "https://localhost:7149";
+        options.Audience = "PizzaShopWebAPI";
+        options.RequireHttpsMetadata = false;
+    });
+
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -53,14 +83,19 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();//connection support for static files like css,js etc
-
+app.UseCustomExceptionHandler();
 app.UseRouting();
-app.UseCookiePolicy();
+app.UseHttpsRedirection();
+//app.UseStaticFiles();//connection support for static files like css,js etc
+//app.UseCookiePolicy();
+app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
