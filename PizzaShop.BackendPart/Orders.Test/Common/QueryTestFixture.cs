@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace Orders.Test.Common
 {
@@ -31,4 +32,7 @@ namespace Orders.Test.Common
             OrdersContextFactory.Destroy(Context);
         }
     }
+
+    [CollectionDefinition("QueryCollection")]
+    public class QueryCollection : ICollectionFixture<QueryTestFixture> { }
 }
