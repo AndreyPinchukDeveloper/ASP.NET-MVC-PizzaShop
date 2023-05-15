@@ -73,7 +73,7 @@ namespace Orders.Test.Orders.Commands
                 await deleteHandler.Handle(
                     new DeleteOrderCommand
                     {
-                        Id = noteId
+                        Id = noteId,
                         UserId = OrdersContextFactory.UserBId
                     },
                     CancellationToken.None));
