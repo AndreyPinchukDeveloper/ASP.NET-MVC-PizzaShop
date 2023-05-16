@@ -11,8 +11,10 @@ using ShopApplication.Orders.Queries.GetOrderList;
 
 namespace PizzaShop.Controllers
 {
+    //[ApiVersion("1.0")]//we can add 2.0/3.0 etc one for another
+    [ApiVersionNeutral]//guarantee that controller will be called even if ApiVersion isn't suitable
     [Produces("application/json")]
-    [Route("api/[controller]")]
+    [Route("api/{version:apiVersion}/[controller]")]
     public class ShopController:BaseController
     {
         private readonly IMapper _mapper;
@@ -45,7 +47,6 @@ namespace PizzaShop.Controllers
             var vm = await Mediator.Send(query);
             return Ok(vm);
         }
-
 
         /// <summary>
         /// Gets the order by id
