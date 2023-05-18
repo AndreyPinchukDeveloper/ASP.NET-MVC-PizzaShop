@@ -152,6 +152,7 @@ namespace PizzaShop.Controllers
             };
             await Mediator.Send(command);
             return NoContent();
+
         }
     }
 }
