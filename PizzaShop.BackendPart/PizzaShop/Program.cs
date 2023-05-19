@@ -12,6 +12,8 @@ using PizzaShop.Middleware;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using ShopApplication.Interfaces;
+using PizzaShop.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -80,6 +82,8 @@ builder.Services.AddVersionedApiExplorer(options =>
 builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApiVersioning();
+builder.Services.AddSingleton<ICurrentUserService, CurrentUserService>();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
